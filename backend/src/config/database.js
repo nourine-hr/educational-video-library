@@ -1,29 +1,23 @@
-// src/config/database.js
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Create a connection pool
+// Use Railway's variable names (PGUSER, PGHOST, etc.)
+// Or fallback to your local names (DB_USER, DB_HOST, etc.)
 const pool = new Pool({
-  user: process.env.DB_USER || 'postgres',        
-  host: process.env.DB_HOST || 'localhost',        
-  database: process.env.DB_NAME || 'educational_app',    
-  password: process.env.DB_PASSWORD || '',         
-  port: process.env.DB_PORT || 5432,              
+  user: process.env.PGUSER || process.env.DB_USER,
+  host: process.env.PGHOST || process.env.DB_HOST,
+  database: process.env.PGDATABASE || process.env.DB_NAME,
+  password: process.env.PGPASSWORD || process.env.DB_PASSWORD,
+  port: process.env.PGPORT || process.env.DB_PORT,
 });
 
-// Test connection immediately
+// Test connection
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
     console.error('❌ Database connection failed:', err.message);
-    console.error('Check your .env file settings');
   } else {
-    console.log('✅ Connected to PostgreSQL database at', res.rows[0].now);
+    console.log('✅ Connected to PostgreSQL');
   }
-});
-
-// Handle errors after initial connection
-pool.on('error', (err) => {
-  console.error('❌ Unexpected error on idle client', err);
 });
 
 module.exports = pool;
