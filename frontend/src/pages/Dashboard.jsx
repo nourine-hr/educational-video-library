@@ -44,15 +44,15 @@ export default function Dashboard() {
     }
   };
 
-  const handleSaveVideo = async (videoId) => {
-    try {
-      await videoService.saveVideo(videoId);
-      setSavedVideoIds(prev => new Set([...prev, videoId]));
-      alert('Video saved!');
-    } catch (err) {
-      alert('Failed to save video: ' + (err.error || err.message));
-    }
-  };
+ const handleSaveVideo = async (videoId) => {
+  try {
+    await videoService.saveVideo(videoId);
+    setSavedVideoIds(prev => new Set([...prev, videoId]));
+    // Removed alert - button state change is enough
+  } catch (err) {
+    alert('Failed to save video: ' + (err.error || err.message));
+  }
+};
 
   if (loading) return <div className="dashboard-loading">Loading...</div>;
   if (error) return <div className="dashboard-error">{error}</div>;
