@@ -10,6 +10,9 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Upload from './pages/Upload';
+import Discover from './pages/Discover';
+import CreatorProfile from './pages/CreatorProfile';
+
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -61,6 +64,23 @@ function App() {
               <Upload />
              </ProtectedRoute>
             } 
+          />
+          <Route
+            path="/discover"
+            element={
+              <ProtectedRoute>
+                <Discover />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/creator/:userId"
+            element={
+              <ProtectedRoute>
+                <CreatorProfile />
+              </ProtectedRoute>
+            }
           />
           
           

@@ -17,10 +17,10 @@ export default function Navbar() {
         <Link to="/dashboard" className="navbar-logo">
           📚 EduShare
         </Link>
-
               <div className="navbar-menu">
                   <Link to="/dashboard" className="nav-link">Dashboard</Link>
-                  <Link to="/upload" className="nav-link">Upload</Link>  {/* Add this */}
+                  <Link to="/discover" className="nav-link">Discover</Link>  {/* Add this */}
+                  <Link to="/upload" className="nav-link">Upload</Link>
                   <Link to="/profile" className="nav-link">Profile</Link>
                   <span className="nav-username">{user?.username}</span>
                   <button onClick={handleLogout} className="logout-btn">
