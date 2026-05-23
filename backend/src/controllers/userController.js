@@ -61,6 +61,8 @@ const getUserProfile = async (req, res) => {
   }
 };
 
+
+
 /*
   GET /api/users/me
   Get CURRENT logged-in user's profile (protected)

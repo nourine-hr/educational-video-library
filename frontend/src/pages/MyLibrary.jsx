@@ -116,7 +116,7 @@ export default function MyLibrary() {
               </div>
 
               <div className="library-card-actions">
-                <button className="edit-btn" title="Edit">✏️</button>
+                
                 <button 
                   className="delete-btn" 
                   onClick={() => handleDelete(content.id)}

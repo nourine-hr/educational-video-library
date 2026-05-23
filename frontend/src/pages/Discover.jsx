@@ -16,44 +16,31 @@ export default function Discover() {
   }, []);
 
   const fetchAllUsers = async () => {
-    try {
-      setLoading(true);
-      // For now, we'll use a simple approach
-      // In production, we'd have a /api/users endpoint that returns all users
-      // For now, just show a message
-      setCreators([
-        {
-          id: 1,
-          username: 'math_teacher',
-          bio: 'Teaching mathematics to students worldwide',
-          profile_image_url: null,
-          followers_count: 245,
-          videos_count: 12
-        },
-        {
-          id: 2,
-          username: 'spanish_teacher',
-          bio: 'Spanish language expert',
-          profile_image_url: null,
-          followers_count: 189,
-          videos_count: 8
-        },
-        {
-          id: 3,
-          username: 'english_teacher',
-          bio: 'English literature and composition',
-          profile_image_url: null,
-          followers_count: 312,
-          videos_count: 15
-        }
-      ]);
-    } catch (err) {
-      setError('Failed to load creators');
-    } finally {
-      setLoading(false);
+  try {
+    setLoading(true);
+    
+    // Fetch real users from backend
+    // Temporarily, we'll fetch user 1, 2, 3
+    const userIds = [1, 2, 3];
+    const fetchedCreators = [];
+    
+    for (const id of userIds) {
+      try {
+        const userData = await userService.getUserProfile(id);
+        fetchedCreators.push(userData);
+      } catch (err) {
+        console.error(`Failed to fetch user ${id}:`, err);
+      }
     }
-  };
-
+    
+    setCreators(fetchedCreators);
+  } catch (err) {
+    console.error('Error fetching creators:', err);
+    setError('Failed to load creators');
+  } finally {
+    setLoading(false);
+  }
+};
   const filteredCreators = creators.filter(creator =>
     creator.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
     creator.bio.toLowerCase().includes(searchQuery.toLowerCase())

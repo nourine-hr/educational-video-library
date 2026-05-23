@@ -7,6 +7,7 @@ const { authenticateToken } = require('../middleware/authMiddleware');
 router.get('/me', authenticateToken, userController.getCurrentUserProfile);  // MUST come FIRST
 router.get('/:userId', userController.getUserProfile);    // Then the dynamic route
 
+
 // Update current user's profile (protected)
 router.put('/:userId', authenticateToken, userController.updateUserProfile);
 

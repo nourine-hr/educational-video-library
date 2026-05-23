@@ -171,7 +171,32 @@
 .discover-error {
   color: #c33;
 }
+.save-btn {
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  margin-top: 12px;
+  width: 100%;
+}
 
+.save-btn:hover {
+  background: #5568d3;
+}
+
+.save-btn.saved {
+  background: #10b981;
+  cursor: default;
+}
+
+.save-btn.saved:hover {
+  background: #059669;
+}
 @media (max-width: 768px) {
   .discover-container {
     padding: 20px 15px;
