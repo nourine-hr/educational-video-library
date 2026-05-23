@@ -39,17 +39,25 @@ export default function CreatorProfile() {
   };
 
   const handleFollowToggle = async () => {
-    try {
-      if (isFollowing) {
-        await userService.unfollowUser(userId);
-      } else {
-        await userService.followUser(userId);
-      }
-      setIsFollowing(!isFollowing);
-    } catch (err) {
-      console.error('Failed to toggle follow');
+  try {
+    if (isFollowing) {
+      await userService.unfollowUser(userId);
+      setCreator(prev => ({
+        ...prev,
+        followers_count: prev.followers_count - 1
+      }));
+    } else {
+      await userService.followUser(userId);
+      setCreator(prev => ({
+        ...prev,
+        followers_count: prev.followers_count + 1
+      }));
     }
-  };
+    setIsFollowing(!isFollowing);
+  } catch (err) {
+    console.error('Failed to toggle follow');
+  }
+};
 
   if (loading) return <div className="creator-loading">Loading...</div>;
   if (error || !creator) return <div className="creator-error">{error}</div>;

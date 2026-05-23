@@ -1,13 +1,4 @@
 // src/context/AuthContext.jsx
-/*
-  Global authentication state
-  
-  Any component can access:
-  - user (current logged-in user)
-  - isLoggedIn (boolean)
-  - login, signup, logout functions
-*/
-
 import { createContext, useState, useEffect } from 'react';
 import authService from '../services/authService';
 
@@ -18,19 +9,28 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Check if user is logged in (on component mount)
+  // Check if user is logged in when app first loads
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('token');
+      
       if (token) {
         try {
+          // Verify token is still valid by fetching user data
           const userData = await authService.getCurrentUser();
           setUser(userData);
         } catch (err) {
+          // Token is invalid or expired
           console.error('Auth check failed:', err);
           localStorage.removeItem('token');
+          setUser(null);
         }
+      } else {
+        // No token, user not logged in
+        setUser(null);
       }
+      
+      // ALWAYS set loading to false when done
       setLoading(false);
     };
 

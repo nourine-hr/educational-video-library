@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
 import Navbar from './components/Navbar';
 
+
 // Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -12,7 +13,8 @@ import Profile from './pages/Profile';
 import Upload from './pages/Upload';
 import Discover from './pages/Discover';
 import CreatorProfile from './pages/CreatorProfile';
-
+import MyLibrary from './pages/MyLibrary';
+import SavedVideos from './pages/SavedVideos';
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
@@ -30,7 +32,9 @@ const ProtectedRoute = ({ children }) => {
 };
 
 function App() {
-  return (
+
+
+ return (
     <BrowserRouter>
       <AuthProvider>
         <Routes>
@@ -82,6 +86,24 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+         <Route
+           path="/library"
+           element={
+             <ProtectedRoute>
+               <MyLibrary />
+             </ProtectedRoute>
+           }
+         />
+
+         <Route
+           path="/saved"
+           element={
+             <ProtectedRoute>
+               <SavedVideos />
+             </ProtectedRoute>
+           }
+         />
           
           
           {/* Redirect home to dashboard */}
