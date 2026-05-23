@@ -15,17 +15,22 @@ export default function Profile() {
     fetchProfile();
   }, []);
 
-  const fetchProfile = async () => {
-    try {
-      const data = await userService.getCurrentUserProfile();
-      setProfile(data);
-      setFormData(data);
-    } catch (err) {
-      console.error('Failed to load profile');
-    } finally {
-      setLoading(false);
-    }
-  };
+  // src/pages/Profile.jsx
+const fetchProfile = async () => {
+  try {
+    console.log('Fetching current user profile...');
+    const data = await userService.getCurrentUserProfile();
+    console.log('Profile data:', data);
+    setProfile(data);
+    setFormData(data);
+    setError(null);
+  } catch (err) {
+    console.error('Profile fetch error:', err);
+    setError(`Failed to load profile: ${err.error || err.message}`);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleSave = async () => {
     try {

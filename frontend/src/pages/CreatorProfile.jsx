@@ -96,7 +96,19 @@ export default function CreatorProfile() {
               >
                 {isFollowing ? 'Unfollow' : 'Follow'}
               </button>
+              
             )}
+            <button 
+  className="share-btn"
+  onClick={() => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    alert('Profile link copied to clipboard!');
+  }}
+  title="Copy profile link"
+>
+  Share 🔗
+</button>
           </div>
         </div>
       </div>

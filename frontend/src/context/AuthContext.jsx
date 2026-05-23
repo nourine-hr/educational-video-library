@@ -12,26 +12,33 @@ export const AuthProvider = ({ children }) => {
   // Check if user is logged in when app first loads
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      
-      if (token) {
-        try {
-          // Verify token is still valid by fetching user data
-          const userData = await authService.getCurrentUser();
-          setUser(userData);
-        } catch (err) {
-          // Token is invalid or expired
-          console.error('Auth check failed:', err);
-          localStorage.removeItem('token');
+      try {
+        const token = localStorage.getItem('token');
+        
+        if (token) {
+          console.log('Token found, verifying...');
+          
+          try {
+            // Try to get user data
+            const userData = await authService.getCurrentUser();
+            console.log('User verified:', userData);
+            setUser(userData);
+          } catch (err) {
+            console.error('Token verification failed:', err);
+            // Token is invalid or expired
+            localStorage.removeItem('token');
+            setUser(null);
+          }
+        } else {
+          console.log('No token found');
           setUser(null);
         }
-      } else {
-        // No token, user not logged in
+      } catch (err) {
+        console.error('Auth check error:', err);
         setUser(null);
+      } finally {
+        setLoading(false);
       }
-      
-      // ALWAYS set loading to false when done
-      setLoading(false);
     };
 
     checkAuth();
@@ -41,9 +48,11 @@ export const AuthProvider = ({ children }) => {
     setError(null);
     try {
       const data = await authService.login(email, password);
+      console.log('Login successful:', data);
       setUser(data.user);
       return data;
     } catch (err) {
+      console.error('Login error:', err);
       setError(err);
       throw err;
     }
@@ -53,9 +62,11 @@ export const AuthProvider = ({ children }) => {
     setError(null);
     try {
       const data = await authService.signup(email, username, password, firstName, lastName);
+      console.log('Signup successful:', data);
       setUser(data.user);
       return data;
     } catch (err) {
+      console.error('Signup error:', err);
       setError(err);
       throw err;
     }

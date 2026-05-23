@@ -235,6 +235,23 @@
 .creator-error {
   color: #c33;
 }
+.share-btn {
+  padding: 10px 24px;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background 0.3s;
+  margin-left: 10px;
+}
+
+
+.share-btn:hover {
+  background: #e0e0e0;
+}
 
 @media (max-width: 768px) {
   .creator-info-section {

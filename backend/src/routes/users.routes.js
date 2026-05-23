@@ -4,11 +4,8 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const { authenticateToken } = require('../middleware/authMiddleware');
 
-// Get public profile of any user
-router.get('/:userId', userController.getUserProfile);
-
-// Get current user's profile (protected)
-router.get('/me', authenticateToken, userController.getCurrentUserProfile);
+router.get('/me', authenticateToken, userController.getCurrentUserProfile);  // MUST come FIRST
+router.get('/:userId', userController.getUserProfile);    // Then the dynamic route
 
 // Update current user's profile (protected)
 router.put('/:userId', authenticateToken, userController.updateUserProfile);
