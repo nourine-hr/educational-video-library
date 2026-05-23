@@ -1,0 +1,133 @@
+/* src/pages/Login.css */
+/* All the styling in ONE place you can easily modify */
+
+/* Container - the full page */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%);
+}
+
+/* Card - the white box in the center */
+.login-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+}
+
+/* Title */
+.login-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #111;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+/* Subtitle */
+.login-subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form group (label + input together) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label */
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Input fields */
+.form-input {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+/* Input on focus */
+.form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Login button */
+.login-button {
+  padding: 12px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+/* Button hover */
+.login-button:hover {
+  background: #5568d3;
+}
+
+/* Button disabled (when loading) */
+.login-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid #c33;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Footer text */
+.login-footer {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+/* Signup link */
+.signup-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.signup-link:hover {
+  color: #5568d3;
+  text-decoration: underline;
+}
