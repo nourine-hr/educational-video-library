@@ -27,7 +27,7 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:3000',
-    'https://https://educational-video-library.vercel.app/login-vercel-frontend-url.vercel.app'  // Add your Vercel URL here
+    'https://vercel.com/nourine-s-projects/educational-video-library'  // Add your Vercel URL here
   ],
   credentials: true
 }));
