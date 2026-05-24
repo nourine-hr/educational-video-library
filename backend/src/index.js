@@ -22,8 +22,15 @@ const PORT = process.env.PORT || 3001;
 // Middleware runs on EVERY request before it reaches routes
 
 // Enable CORS (let frontend on 3000 talk to backend on 3001)
-app.use(cors());
 
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://https://educational-video-library.vercel.app/login-vercel-frontend-url.vercel.app'  // Add your Vercel URL here
+  ],
+  credentials: true
+}));
 // Parse JSON requests (req.body contains JSON)
 app.use(express.json());
 
