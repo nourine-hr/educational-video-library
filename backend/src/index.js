@@ -22,12 +22,12 @@ const PORT = process.env.PORT || 3001;
 // Middleware runs on EVERY request before it reaches routes
 
 // Enable CORS (let frontend on 3000 talk to backend on 3001)
-
 app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:3000',
-    'https://educational-video-library-production.up.railway.app'  // Add your Vercel URL here
+    'https://educational-video-library.vercel.app',
+    'https://educational-video-library-production.up.railway.app'
   ],
   credentials: true
 }));
