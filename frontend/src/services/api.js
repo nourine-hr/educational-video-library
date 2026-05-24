@@ -1,21 +1,12 @@
-// src/services/api.js
-/*
-  This file sets up Axios to communicate with the backend.
-  
-  Every API request goes through here.
-  We configure:
-  - Base URL (localhost:3001)
-  - Headers (JWT token)
-  - Error handling
-*/
-
 import axios from 'axios';
 
-console.log('VITE_API_URL env var:', process.env.VITE_API_URL);
+// Use your Railway URL directly
+const baseURL = 'https://educational-video-library-production.up.railway.app/api';
 
+console.log('Using API URL:', baseURL);
 
 const api = axios.create({
-  baseURL: process.env.VITE_API_URL || 'http://localhost:3001/api',
+  baseURL: baseURL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json'
@@ -39,7 +30,6 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      // Token expired or invalid
       localStorage.removeItem('token');
       window.location.href = '/login';
     }
