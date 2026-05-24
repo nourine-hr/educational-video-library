@@ -1,14 +1,12 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-// Use Railway's variable names (PGUSER, PGHOST, etc.)
-// Or fallback to your local names (DB_USER, DB_HOST, etc.)
+// Use DATABASE_URL from Railway
 const pool = new Pool({
-  user: process.env.PGUSER || process.env.DB_USER,
-  host: process.env.PGHOST || process.env.DB_HOST,
-  database: process.env.PGDATABASE || process.env.DB_NAME,
-  password: process.env.PGPASSWORD || process.env.DB_PASSWORD,
-  port: process.env.PGPORT || process.env.DB_PORT,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 // Test connection
