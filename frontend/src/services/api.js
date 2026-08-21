@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3001/api';
+const baseURL = 'https://educational-video-library-466p-qlvgtwys8-nourine-s-projects.vercel.app/api';
 
 console.log('Using API URL:', baseURL);
 
