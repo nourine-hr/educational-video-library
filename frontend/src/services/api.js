@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Use your Railway URL directly
-const baseURL = 'https://educational-video-library-production.up.railway.app/api';
+const baseURL = 'http://localhost:3001/api';
 
 console.log('Using API URL:', baseURL);
 
