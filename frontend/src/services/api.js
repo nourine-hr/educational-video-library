@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://educational-video-library-466p-qlvgtwys8-nourine-s-projects.vercel.app/api';
+const baseURL = 'https://educational-video-library-466p-steel.vercel.app/api';
 
 console.log('Using API URL:', baseURL);
 
